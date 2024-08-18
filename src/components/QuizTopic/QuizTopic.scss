@@ -1,0 +1,69 @@
+@import "../../styles/font.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/breakpoints.scss";
+
+
+.title-ligth {
+    font-size: $heading-L;
+    font-family: $title-primary;
+}
+.title-medium {
+    font-size: $heading-L;
+    font-family: $title-secondary;
+}
+.label-topic {
+    font-family: $label;
+    font-size: $label-s;
+    color: $greyNavy;
+
+}
+.quiz-topic-title {
+    font-family: $title-secondary;
+    font-size: $heading-S;
+}
+
+
+
+.icon-wrapper {
+    width: 56px;
+    height: 56px;
+    align-items: flex-end;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.html {
+        background-color: #FFF1E9;
+      }
+      &.css {
+        background-color: #E0FDEF;
+      }
+      &.javascript {
+        background: #EBF0FF;
+      }
+      &.accessibility {
+        background: #F6E7FF;
+      }
+      @include media("<=tablet")  {
+        border-radius: 12px;
+      } 
+}
+
+.main-container-topics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .welcome {
+
+
+        text-align: left;
+        
+    }
+    @include media("<=tablet")   {
+        grid-template-columns: 640px;
+        justify-content: center;
+        align-items: center;
+        .welcome {
+           margin-bottom: 64px;
+        }
+      } 
+}

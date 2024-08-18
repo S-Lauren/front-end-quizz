@@ -1,0 +1,79 @@
+
+@import "./breakpoints.scss";
+@import "./colors.scss";
+@import "./font.scss";
+@import "../components/QuizTopic/QuizTopic.scss";
+
+
+html {
+  height: 0;
+}
+ul,p, h1 {
+  margin: 0;
+  padding: 0; 
+}
+
+body {
+  font-family: 'Rubik';
+  margin: 0;
+  min-height: 100vh;
+  @include media("<=LGdesktop") {
+    background-color: $lightGrey;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDQwIiBoZWlnaHQ9Ijk2MCIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDE0NDAgOTYwIj48ZyBzdHJva2U9IiNlZGYxZjkiIHN0cm9rZS13aWR0aD0iMTQ0Ij48Y2lyY2xlIGN4PSItNTAuNSIgY3k9Ijc1LjUiIHI9IjQxNi41Ii8+PGNpcmNsZSBjeD0iMTM4OC41IiBjeT0iODQwLjUiIHI9IjQxNi41Ii8+PC9nPjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include media("<=desktop") {
+      background-size: unset;
+    }
+    @include media("<=tablet")  {
+      background-size: unset;
+    } 
+  }
+}
+.container-fluid {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  .row {
+    display: flex;
+    height: 100%;
+  }
+}
+
+
+
+
+.container {
+  width: 1560px;
+  min-width: 1560px;
+  margin: 0 auto;
+  height: 100%;
+  @include media("<=1560px") {
+    width: 1280px;
+    min-width: 1280px;
+  }
+  @include media("<=desktop") {
+    width: 1080px;
+    min-width: 1080px;
+  }
+  @include media("<=1080px") {
+    width: 100%;
+    min-width: 100%;
+  }
+  .row {
+    display: flex;
+    height: 100%;
+    padding: 0 32px;
+    @include media("<=phone") {
+      padding: 0 16px;
+    }
+  }
+  .center {
+    align-items: center;
+  }
+  .space-between {
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,28 @@
+
+  @font-face {
+    font-family: 'Rubik';
+    src: url('../assets/fonts/Rubik-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'RubikMedium';
+    src: url('../assets/fonts/Rubik-VariableFont_wght.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'RubikItalic';
+    src: url('../assets/fonts/static/Rubik-Italic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+  }
+
+// Font fam'ly
+  $title-primary: 'Rubik';
+  $title-secondary: 'RubikMedium';
+  $label: 'RubikItalic';
+// font size
+  $heading-L: 64px;
+  $heading-S: 28px;
+  $label-s: 20px;
