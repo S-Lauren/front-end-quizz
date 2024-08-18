@@ -1,15 +1,18 @@
 import data from "../../data.json";
-import { Quiz } from "../../redux/reducer/quiz.reducer";
+import { Quiz, selectQuiz } from "../../redux/reducer/quiz.reducer";
 import { SyntheticEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import "./QuizTopic.scss";
 import { Button } from "../common/Button";
-// import '../../assets/images/icon-css.svg'
+import { useDispatch } from "react-redux";
+
 export const QuizTopic = () => {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSelectQuiz =
     (quiz: Quiz) => (e: SyntheticEvent<HTMLButtonElement>) => {
       e.preventDefault();
+      dispatch(selectQuiz(quiz));
       navigate(`/${quiz.title}`);
     };
 

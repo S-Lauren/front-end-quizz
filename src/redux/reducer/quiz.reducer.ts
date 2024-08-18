@@ -15,25 +15,18 @@ export type QuizState = {
   quizzes: Quiz[];
 };
 
-const initialState = { quizzes: [] } as QuizState;
+const initialState: Quiz[] = [];
 
 const quizSlice = createSlice({
   name: "quizes",
   initialState,
   reducers: {
-    initializeQuizzes: (state, action: PayloadAction<{ quizzes: Quiz[] }>) => {
-      console.log;
-      state.quizzes = action.payload.quizzes;
-    },
     selectQuiz: (state, action: PayloadAction<Quiz>) => {
-      console.log("action", state.quizzes);
-      state.quizzes.push(action.payload);
+      state.push(action.payload);
     },
   },
 });
 
-// this is for dispatch
-export const { selectQuiz, initializeQuizzes } = quizSlice.actions;
+export const { selectQuiz } = quizSlice.actions;
 
-// this is for configureStore
 export default quizSlice.reducer;

@@ -1,14 +1,19 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { currentQuiz } from "../redux/selectors/quiz.selectors";
+import { selectQuizByTitle } from "../redux/selectors/quiz.selectors";
 
 export const Questions = () => {
   const { title } = useParams();
-  const quiz = useSelector(currentQuiz(title));
+  const quiz = useSelector(selectQuizByTitle(title));
+
   const [count, setCount] = useState(0);
   const [questions, setQuestions] = useState(quiz?.questions[0]);
   const [goodAnswer, setGoodAnswer] = useState("");
+  if (!quiz) {
+    console.log("no");
+    return <Navigate to="/" />;
+  }
 
   useEffect(() => {
     setQuestions(quiz?.questions[count + 1]);
@@ -40,7 +45,7 @@ export const Questions = () => {
           </p>
           <p>{questions.question}</p>
           <ul>
-            {questions.options.map((opt) => (
+            {questions.options.map((opt: string) => (
               <button
                 key={opt}
                 style={{
