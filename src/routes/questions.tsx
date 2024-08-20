@@ -1,17 +1,22 @@
 import { Navigate, useParams } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { selectQuizByTitle } from "../redux/selectors/quiz.selectors";
+import { addGoodAnswer } from "../redux/reducer/answer.reducer";
 
 export const Questions = () => {
   const { title } = useParams();
   const quiz = useSelector(selectQuizByTitle(title));
-
+  // state local
   const [count, setCount] = useState(0);
   const [questions, setQuestions] = useState(quiz?.questions[0]);
-  const [goodAnswer, setGoodAnswer] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [goodAnswerCount, setCountGoodAnswer] = useState(0);
+
+  const btnRef = useRef(null);
+  const dispatch = useDispatch();
+
   if (!quiz) {
-    console.log("no");
     return <Navigate to="/" />;
   }
 
@@ -27,10 +32,14 @@ export const Questions = () => {
   const handleResponse = useCallback(
     (opt: string) => () => {
       if (opt === questions?.answer) {
-        setGoodAnswer(opt);
+        setCountGoodAnswer((prev) => {
+          dispatch(addGoodAnswer({ count: prev + 1 }));
+          return prev + 1;
+        });
+        setAnswer(opt);
       }
     },
-    [questions]
+    [questions, goodAnswerCount, answer]
   );
 
   return (
@@ -48,9 +57,10 @@ export const Questions = () => {
             {questions.options.map((opt: string) => (
               <button
                 key={opt}
+                ref={btnRef}
                 style={{
                   cursor: "pointer",
-                  color: goodAnswer === opt ? "green" : "red",
+                  color: answer === opt ? "green" : "grey",
                 }}
                 onClick={handleResponse(opt)}
               >

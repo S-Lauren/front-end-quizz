@@ -18,5 +18,12 @@
         height: 80px;
         padding: 12px; 
       } 
-
+      .inner-content {
+        display: grid;
+        align-items: center;
+        justify-content: left;
+        grid-template-columns: auto auto;
+        gap: 32px;
+      }
 }
+

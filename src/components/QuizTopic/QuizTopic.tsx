@@ -27,15 +27,7 @@ export const QuizTopic = () => {
         {data.quizzes.map((quiz: Quiz) => {
           return (
             <Button key={quiz.title} onClick={handleSelectQuiz(quiz)}>
-              <div
-                style={{
-                  display: "grid",
-                  alignItems: "center",
-                  justifyContent: "left",
-                  gridTemplateColumns: "auto auto",
-                  gap: "32px",
-                }}
-              >
+              <div className="inner-content">
                 <div
                   className={`icon-wrapper ${quiz.title.toLocaleLowerCase()}`}
                 >
